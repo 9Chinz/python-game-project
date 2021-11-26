@@ -46,5 +46,5 @@ py main.py
 or build file .exe and run
 
 ```cmd
-pyinstaller --onefile --windowed --icon=app.ico main.py
+pyinstaller --onefile --windowed --icon=icon.ico main.py
 ```
