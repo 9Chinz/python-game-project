@@ -1,0 +1,9 @@
+
+# ignore __pycache__
+/__pycache__
+
+# ignore video
+/doc/*.mp4
+
+# ignore .rar
+/*.rar
