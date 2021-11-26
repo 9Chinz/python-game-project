@@ -12,3 +12,6 @@
 /build
 /dist
 /main.spec
+
+# ignore .docx
+/doc/*.docx
