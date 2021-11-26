@@ -10,3 +10,5 @@
 
 # build file
 /build
+/dist
+/main.spec
