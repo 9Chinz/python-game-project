@@ -29,13 +29,21 @@ pip install pygame
 pip install pyinstaller
 ```
 
+or install from requirements file
+
+```cmd
+pip install -r requirements.txt
+```
+
 ## How to run 🏃‍♀️
+
+run the file by using python
 
 ```cmd
 py main.py
 ```
 
-or build file .exe
+or build file .exe and run
 
 ```cmd
 pyinstaller --onefile --windowed --icon=app.ico main.py
