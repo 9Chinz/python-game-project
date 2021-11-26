@@ -7,3 +7,6 @@
 
 # ignore .rar
 /*.rar
+
+# build file
+/build
