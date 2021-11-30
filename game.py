@@ -283,10 +283,10 @@ class Game():
                         self.enemy_amount -= 1
                         self.game_ui.score += 1 * self.game_ui.multiplier_score
                         self.count_kill += 1
+                        self.enemys[self.lock_enemy].get_lock = False
                         self.enemys.pop(self.lock_enemy)
                         self.bullets.pop(index)
                         self.is_lock_on = False
-                        self.enemys[self.lock_enemy].get_lock = False
                         self.lock_enemy = 0
                     else:
                         self.bullets.pop(index)
