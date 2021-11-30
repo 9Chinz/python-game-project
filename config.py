@@ -1,5 +1,5 @@
 AUTHOR = "Chinnapat Limprathan 64015030"
-GAME_CAPTION = "Alien of typing V1.02b"
+GAME_CAPTION = "Alien of typing V1.12a"
 GAME_TITLE = "Alien of typing"
 
 WINDOW_WIDTH = 1000
@@ -32,6 +32,7 @@ EFFECT_VOLUME = 0.05
 
 COLLISION_TOLERANCE = 22
 DAMAGE = 49
+SPAWN_DELAY_TIME = 1500
 
 WHITE = "#FFFFFF"
 ORANGE = "#EF7300"

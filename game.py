@@ -152,6 +152,7 @@ class Game():
         self.count_kill = 0
         self.steak = 0
         self.level = 1
+        self.delay_time = SPAWN_DELAY_TIME
         
         self.explosion = []
         self.explode_sound = pygame.mixer.Sound(EXPLODE_SOUND)
@@ -238,7 +239,7 @@ class Game():
                     self.is_pause = True
         
         
-        if self.enemy_amount < self.max_enemys and pygame.time.get_ticks() - self.current_time > 1500:
+        if self.enemy_amount < self.max_enemys and pygame.time.get_ticks() - self.current_time > self.delay_time:
             self.current_time = pygame.time.get_ticks()
             self.enemy_amount += 1
             self.spawn_enemy(mode)
@@ -248,6 +249,7 @@ class Game():
             self.max_enemys += 1
             self.count_kill = 0
             self.level += 1
+            self.delay_time -= 50
         if self.steak >= 5:
             self.game_ui.multiplier_score += 0.25
             self.steak = 0
