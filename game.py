@@ -230,6 +230,9 @@ class Game():
                         else:
                             self.steak = 0
                             self.game_ui.multiplier_score = 1
+                else:
+                    self.steak = 0
+                    self.game_ui.multiplier_score = 1
                         
                 if event.key == pygame.K_ESCAPE:
                     self.is_pause = True
