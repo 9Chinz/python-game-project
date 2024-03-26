@@ -16,3 +16,9 @@
 
 # ignore .docx
 /doc/*.docx
+
+# ignore gihub
+.github/workflows
+
+# ignore DevENV
+/DevENV
