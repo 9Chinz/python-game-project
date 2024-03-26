@@ -1,4 +1,5 @@
 import pygame, sys, random, math, json
+import asyncio
 from pygame import Vector2
 from spritesheet import SpriteSheet
 from config import *
@@ -167,7 +168,7 @@ class Game():
         # update screen
         self.bg_y += 1
     
-    def game_pause(self, screen):
+    async def game_pause(self, screen):
         while self.is_pause:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -186,8 +187,9 @@ class Game():
                 self.is_pause = False
                 
             pygame.display.update()
+            await asyncio.sleep(0)
     
-    def game_over(self, screen):
+    async def game_over(self, screen):
         while self.is_pause:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -203,8 +205,9 @@ class Game():
                 self.is_pause = False
                 
             pygame.display.update()
+            await asyncio.sleep(0)
             
-    def main(self, screen, mode):
+    async def main(self, screen, mode):
         self.draw_background(screen)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -305,11 +308,9 @@ class Game():
             self.is_pause = True
         if self.game_ui.health_amount <= 0:
             self.is_pause = True
-            self.game_over(screen)
+            await self.game_over(screen)
         if self.is_pause:
-            self.game_pause(screen)
-        
-        pygame.display.update()
+            await self.game_pause(screen)
     
     def spawn_enemy(self, mode):
         rand_word = self.random_word(self.word_dict, mode)

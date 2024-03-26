@@ -3,7 +3,7 @@ GAME_CAPTION = "Alien of typing V1.12a"
 GAME_TITLE = "Alien of typing"
 
 WINDOW_WIDTH = 1000
-WINDOW_HEIGHT = 900
+WINDOW_HEIGHT = 800
 FPS = 60
 
 MINECRAFT_FONT = './asset/Font/Minecraft.ttf'
@@ -25,7 +25,7 @@ ENEMY_SMALL = './asset/Graphics/spritesheets/enemy-small.png'
 
 BACKGROUND_MUSIC = './asset/Sound/spaceship_shooter.wav'
 LASER_SHOOT_SOUND = "./asset/Sound/laser-shoot.wav"
-EXPLODE_SOUND = "./asset/Sound/explosion_sound.mp3"
+EXPLODE_SOUND = "./asset/Sound/explosion_sound.wav"
 
 BG_VOLUME = 0.08
 EFFECT_VOLUME = 0.05

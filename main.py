@@ -1,8 +1,9 @@
 import pygame
-import sys
 from menu import SelectMenu, MainMenu
 from game import Game
 from config import *
+import asyncio, sys, platform
+from pygame.locals import DOUBLEBUF, FULLSCREEN
 
 class MainGame:
     def __init__(self):
@@ -29,8 +30,6 @@ class MainGame:
         if game_menu.exit_button.check_click():
             pygame.quit()
             sys.exit()
-
-        pygame.display.update()
     
     def select_level(self):
         for event in pygame.event.get():
@@ -52,23 +51,22 @@ class MainGame:
             self.state = "main_game"
         if select_menu.back_botton.check_click():
             self.state = "main_menu"
-        pygame.display.update()
     
-    def main_game(self, mode):
-        main_game.main(screen, mode)
+    async def main_game(self, mode):
+        await main_game.main(screen, mode)
         if main_game.is_game_end:
             self.state = "main_menu"
             self.bg_music.stop()
             main_game.reset()
     
-    def menu_state(self):
+    async def menu_state(self):
         self.draw_background(screen)
         if self.state == "main_menu":
             self.main_menu()
         if self.state == "select_level":
             self.select_level()
         if self.state == "main_game":
-            self.main_game(self.game_mode)
+            await self.main_game(self.game_mode)
     
     def draw_background(self, screen):
         # return remain y
@@ -81,9 +79,10 @@ class MainGame:
 
 pygame.init()
 clock = pygame.time.Clock()
-screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
+screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT), DOUBLEBUF, 16)
+pygame.mixer.pre_init(44100, 16, 2, 512)
 pygame.display.set_caption(GAME_CAPTION)
-pygame.display.set_icon(pygame.image.load(ICON_IMG))
+pygame.display.set_icon(pygame.image.load(ICON_IMG).convert_alpha())
 
 # obj create
 
@@ -92,6 +91,11 @@ select_menu = SelectMenu()
 main_game = Game()
 game = MainGame()
 
-while True:
-    game.menu_state()
-    clock.tick(FPS)
+async def main():
+    while True:
+        await game.menu_state()
+        pygame.display.update()
+        await asyncio.sleep(0)
+        clock.tick(FPS)
+        
+asyncio.run(main())
